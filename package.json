@@ -1,0 +1,23 @@
+{
+  "name": "chess-tournament-manager",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Chess Tournament Management System — Svelte + JavaScript + SQLite (WASM)",
+  "scripts": {
+    "prepare:wasm": "node scripts/copy-sql-wasm.js",
+    "dev": "npm run prepare:wasm && vite dev",
+    "build": "npm run prepare:wasm && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "sql.js": "^1.14.1"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-static": "^3.0.10",
+    "@sveltejs/kit": "^2.70.2",
+    "@sveltejs/vite-plugin-svelte": "^7.3.0",
+    "svelte": "^5.56.9",
+    "vite": "^8.2.1"
+  }
+}
