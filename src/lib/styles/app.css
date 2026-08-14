@@ -1,0 +1,335 @@
+/*
+  Visual direction: a tournament hall. Baize-green boards, buff light squares,
+  brass clocks and medals. Notation is monospaced because chess notation is.
+*/
+:root {
+  --baize-950: #0c211c;
+  --baize-900: #12302a;
+  --baize-800: #183d34;
+  --baize-700: #1f4d41;
+  --baize-600: #2a6455;
+  --buff-100: #f4eddc;
+  --buff-200: #e2d5b2;
+  --buff-400: #b7a781;
+  --sage: #90ada1;
+  --brass: #cda44e;
+  --brass-dim: #8d6f2f;
+  --claret: #b25550;
+  --claret-dim: #6d2f2c;
+
+  --line: rgba(244, 237, 220, 0.14);
+  --line-strong: rgba(244, 237, 220, 0.28);
+
+  --display: 'Bricolage Grotesque', 'Trebuchet MS', sans-serif;
+  --body: 'IBM Plex Sans', system-ui, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --radius: 6px;
+  --shadow: 0 18px 40px rgba(4, 16, 13, 0.45);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--baize-950);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--body);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--buff-100);
+  background-color: var(--baize-900);
+  /* A very faint 8x8 board woven into the background of the hall. */
+  background-image: linear-gradient(
+      45deg,
+      rgba(244, 237, 220, 0.022) 25%,
+      transparent 25%,
+      transparent 75%,
+      rgba(244, 237, 220, 0.022) 75%
+    ),
+    linear-gradient(
+      45deg,
+      rgba(244, 237, 220, 0.022) 25%,
+      transparent 25%,
+      transparent 75%,
+      rgba(244, 237, 220, 0.022) 75%
+    );
+  background-size: 96px 96px;
+  background-position: 0 0, 48px 48px;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.1rem);
+}
+h2 {
+  font-size: 1.35rem;
+}
+h3 {
+  font-size: 1.05rem;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+/* ---------- Structure ---------- */
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+
+.muted {
+  color: var(--sage);
+}
+
+.mono {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.spread {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.panel {
+  background: var(--baize-800);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+
+.panel--flush {
+  padding: 0;
+  overflow: hidden;
+}
+
+.panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--line);
+}
+
+/* ---------- Controls ---------- */
+
+.btn {
+  font-family: var(--body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--line-strong);
+  background: transparent;
+  color: var(--buff-100);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.btn:hover:not(:disabled) {
+  background: rgba(244, 237, 220, 0.08);
+  border-color: var(--buff-400);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn--primary {
+  background: var(--brass);
+  border-color: var(--brass);
+  color: #21180a;
+}
+
+.btn--primary:hover:not(:disabled) {
+  background: #ddb75f;
+  border-color: #ddb75f;
+}
+
+.btn--danger {
+  color: var(--claret);
+  border-color: var(--claret-dim);
+}
+
+.btn--danger:hover:not(:disabled) {
+  background: rgba(178, 85, 80, 0.14);
+  border-color: var(--claret);
+}
+
+.btn--small {
+  padding: 0.35rem 0.7rem;
+  font-size: 0.78rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.field label {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sage);
+}
+
+input,
+select {
+  font-family: var(--body);
+  font-size: 0.95rem;
+  color: var(--buff-100);
+  background: var(--baize-950);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  padding: 0.55rem 0.7rem;
+  width: 100%;
+}
+
+input::placeholder {
+  color: rgba(144, 173, 161, 0.7);
+}
+
+input:focus-visible,
+select:focus-visible,
+.btn:focus-visible,
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 2px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.9rem;
+}
+
+/* ---------- Tables ---------- */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sage);
+  text-align: left;
+  padding: 0.7rem 1.25rem;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+td {
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background: rgba(244, 237, 220, 0.035);
+}
+
+.numeric {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+/* ---------- Badges ---------- */
+
+.badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  border: 1px solid currentColor;
+}
+
+.badge--draft {
+  color: var(--sage);
+}
+.badge--in_progress {
+  color: var(--brass);
+}
+.badge--completed {
+  color: #7fc0a3;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
