@@ -3,7 +3,7 @@
 A tournament desk in the browser: register players, open a tournament, enter the field, draw
 random pairings round by round, and publish the podium.
 
-**Live demo:** _add your deployment URL here_
+Live demo: https://chess-tournament-manager-submission-3ptr3caxl.vercel.app
 
 Built with **Svelte 5 + SvelteKit + JavaScript**, storing everything in a real **SQLite** database
 that runs in the browser through WebAssembly.
